@@ -202,94 +202,94 @@ const Header = () => {
         </div>
 
         {/* Mobile menu stub */}
-        <div className="relative md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          {/* Mobile Cart Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="rounded-xl border px-3 py-1.5 text-sm hover:bg-muted transition"
+            onClick={() => setIsCartOpen(true)}
+            className="flex items-center gap-1 rounded-xl border px-3 py-1.5 text-sm hover:bg-muted transition"
           >
-            Menu{" "}
-            <ChevronDown
-              className={`inline h-4 w-4 transition-transform ${
-                isMobileMenuOpen ? "rotate-180" : ""
-              }`}
-            />
+            <ShoppingBag className="h-4 w-4" />
+            <span>{totalItems}</span>
           </button>
 
-          {isMobileMenuOpen && (
-            <div className="absolute left-0 mt-2 w-48 rounded-lg border bg-white shadow-md z-50">
-              <ul className="text-sm">
-                <li>
-                  <Link
-                    to="/"
-                    className="block px-4 py-2 hover:bg-muted"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="#categories"
-                    className="block px-4 py-2 hover:bg-muted"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Browse Menu
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#deals"
-                    className="block px-4 py-2 hover:bg-muted"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Special Offers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#restaurants"
-                    className="block px-4 py-2 hover:bg-muted"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Restaurants
-                  </a>
-                </li>
-                <li>
-                  <Link
-                    to="/track"
-                    className="block px-4 py-2 hover:bg-muted"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Track Order
-                  </Link>
-                </li>
-                <li className="border-t">
-                  <button
-                    className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2"
-                    onClick={() => {
-                      setIsCartOpen(true);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    <ShoppingBag className="h-4 w-4" />
-                    Cart ({totalItems})
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="w-full text-left px-4 py-2 hover:bg-muted text-red-500"
-                    onClick={() => {
-                      logout();
-                      setIsMobileMenuOpen(false);
-                      navigate("/login");
-                    }}
-                  >
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </div>
-          )}
+          {/* Mobile Menu Button */}
+          <div className="relative">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="rounded-xl border px-3 py-1.5 text-sm hover:bg-muted transition"
+            >
+              Menu{" "}
+              <ChevronDown
+                className={`inline h-4 w-4 transition-transform ${
+                  isMobileMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isMobileMenuOpen && (
+              <div className="absolute left-0 mt-2 w-48 rounded-lg border bg-white shadow-md z-50">
+                <ul className="text-sm">
+                  <li>
+                    <Link
+                      to="/"
+                      className="block px-4 py-2 hover:bg-muted"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <a
+                      href="#categories"
+                      className="block px-4 py-2 hover:bg-muted"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Browse Menu
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#deals"
+                      className="block px-4 py-2 hover:bg-muted"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Special Offers
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#restaurants"
+                      className="block px-4 py-2 hover:bg-muted"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Restaurants
+                    </a>
+                  </li>
+                  <li>
+                    <Link
+                      to="/track"
+                      className="block px-4 py-2 hover:bg-muted"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Track Order
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      className="w-full text-left px-4 py-2 hover:bg-muted text-red-500"
+                      onClick={() => {
+                        logout();
+                        setIsMobileMenuOpen(false);
+                        navigate("/login");
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
