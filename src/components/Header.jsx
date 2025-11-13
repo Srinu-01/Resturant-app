@@ -265,6 +265,18 @@ const Header = () => {
                 </li>
                 <li className="border-t">
                   <button
+                    className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2"
+                    onClick={() => {
+                      setIsCartOpen(true);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <ShoppingBag className="h-4 w-4" />
+                    Cart ({totalItems})
+                  </button>
+                </li>
+                <li>
+                  <button
                     className="w-full text-left px-4 py-2 hover:bg-muted text-red-500"
                     onClick={() => {
                       logout();
