@@ -216,7 +216,7 @@ const Header = () => {
           </button>
 
           {isMobileMenuOpen && (
-            <div className="absolute right-0 mt-2 w-48 rounded-lg border bg-white shadow-md z-50">
+            <div className="absolute left-0 mt-2 w-48 rounded-lg border bg-white shadow-md z-50">
               <ul className="text-sm">
                 <li>
                   <Link
