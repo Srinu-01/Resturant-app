@@ -1,0 +1,170 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    --primary: 25 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 10% 95%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 20% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 95%;
+    --ring: 25 100% 55%;
+
+    --radius: 0.75rem;
+
+    --hero-gradient: linear-gradient(
+      135deg,
+      hsl(25 100% 55%) 0%,
+      hsl(30 100% 60%) 100%
+    );
+    --card-shadow: 0 4px 12px hsla(220, 20%, 15%, 0.08);
+    --card-shadow-hover: 0 8px 24px hsla(220, 20%, 15%, 0.12);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* height of the sticky header (promo + main nav) used for anchor offset */
+    --header-offset: 88px;
+  }
+
+  @theme {
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
+    --color-popover: hsl(var(--popover));
+    --color-popover-foreground: hsl(var(--popover-foreground));
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 25 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 25% 15%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 20% 15%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 25 100% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+.image1 {
+  height: 205%;
+  width: 205%;
+}
+
+/* Smooth scrolling for in-page anchors and prevent sticky header overlap */
+html {
+  scroll-behavior: smooth;
+  /* prevent accidental horizontal panning/scroll when moving mouse or on touch devices */
+  overflow-x: hidden;
+}
+
+body {
+  /* also guard body against horizontal overflow from wide children */
+  overflow-x: hidden;
+}
+
+section {
+  /* offset so anchored sections don't end up hidden behind the sticky header */
+  scroll-margin-top: var(--header-offset);
+}
+
+/* When header is fixed we must add top padding to the main content so it isn't
+   overlapped by the header. Adjust --header-offset if your header height
+   changes on different breakpoints. */
+main {
+  padding-top: var(--header-offset);
+}
+
+/* Ensure images don't cause horizontal overflow by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
