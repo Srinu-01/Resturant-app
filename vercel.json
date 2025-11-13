@@ -1,8 +1,7 @@
 {
   "buildCommand": "npm run build",
   "devCommand": "vite",
-  "installCommand": "npm install --legacy-peer-deps",
-  "nodeVersion": "18.x",
+  "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
   },
