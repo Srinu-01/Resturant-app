@@ -1,4 +1,10 @@
 {
+  "buildCommand": "npm run build",
+  "devCommand": "vite",
+  "installCommand": "npm install",
+  "env": {
+    "NODE_ENV": "production"
+  },
   "rewrites": [
     {
       "source": "/(.*)",
