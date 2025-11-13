@@ -161,61 +161,19 @@ const TrackOrder = () => {
     }, 500);
   };
 
-  const handleLoadSampleOrder = () => {
-    const sampleOrder = {
-      orderNumber: "ORD-123456",
-      restaurant: "McDonald's",
-      customerName: "John Doe",
-      items: [
-        { name: "Big Mac", quantity: 2, price: 5.99 },
-        { name: "French Fries", quantity: 1, price: 2.99 },
-        { name: "Coca Cola", quantity: 2, price: 2.49 },
-      ],
-      total: 19.46,
-      status: "OUT_FOR_DELIVERY",
-      timestamp: new Date(Date.now() - 15 * 60000).toISOString(),
-      estimatedDeliveryTime: 15,
-      deliveryAddress: "123 Main St, New York, NY 10001",
-    };
-    localStorage.setItem("currentOrder", JSON.stringify(sampleOrder));
-    setOrderDetails(sampleOrder);
-    setCurrentStatus(sampleOrder.status);
-    setLastUpdated(new Date());
-    setError("");
-  };
-
-  if (error && !orderDetails) {
+  if (error) {
     return (
-      <div className="max-w-2xl mx-auto mt-10 p-4">
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-8 text-center">
-          <div className="mb-4">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-100 mb-4">
-              <MapPin className="w-8 h-8 text-amber-600" />
-            </div>
-          </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            No Active Order
-          </h2>
-          <p className="text-gray-600 mb-6">
-            You don't have any active orders at the moment. Place an order first
-            to track it here.
-          </p>
-          <div className="space-y-3">
-            <button
-              onClick={() => navigate("/customer")}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#FF5722] text-white rounded-lg hover:bg-[#E64A19] transition-colors font-medium"
-            >
-              <Store className="w-5 h-5" />
-              Browse Restaurants & Order
-            </button>
-            <button
-              onClick={handleLoadSampleOrder}
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-amber-300 text-amber-700 rounded-lg hover:bg-amber-50 transition-colors font-medium"
-            >
-              <Navigation className="w-5 h-5" />
-              View Sample Order (Demo)
-            </button>
-          </div>
+      <div className="max-w-lg mx-auto mt-10 text-center p-4">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+          <p className="text-red-600 text-lg font-semibold mb-2">{error}</p>
+          <p className="text-gray-600 mb-4">Redirecting to home...</p>
+          <button
+            onClick={() => navigate("/customer")}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Go to Home
+          </button>
         </div>
       </div>
     );

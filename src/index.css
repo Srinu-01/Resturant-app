@@ -2,7 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 @layer base {
   :root {
     --background: 0 0% 98%;
@@ -160,7 +159,7 @@ section {
    overlapped by the header. Adjust --header-offset if your header height
    changes on different breakpoints. */
 main {
-  padding-top: var(--header-offset);
+  padding-top: 0;
 }
 
 /* Ensure images don't cause horizontal overflow by default */

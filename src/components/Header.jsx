@@ -1,9 +1,17 @@
 // src/components/Header.jsx
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { MapPin, ShoppingBag, ChevronDown, User } from "lucide-react";
+import {
+  MapPin,
+  ShoppingBag,
+  ChevronDown,
+  User,
+  Moon,
+  Sun,
+} from "lucide-react";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+
 import Cart from "./Cart";
 
 const PillLink = ({ to, children, ...props }) => (
@@ -92,7 +100,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="hidden items-center gap-1 sm:flex hover:text-primary transition-colors"
+                className="hidden items-center gap-1 sm:flex text-foreground hover:text-primary transition-colors font-medium"
               >
                 <ShoppingBag className="h-4 w-4" />
                 <span>{totalItems} items</span>
@@ -174,12 +182,12 @@ const Header = () => {
           </button>
 
           {isAccountOpen && (
-            <div className="absolute right-0 mt-2 w-48 rounded-lg border bg-white shadow-md z-50">
+            <div className="absolute right-0 mt-2 w-48 rounded-lg border bg-card text-card-foreground shadow-md z-50">
               <div className="p-3 border-b">
-                <p className="text-sm font-semibold">
+                <p className="text-sm font-semibold text-card-foreground">
                   {auth?.user?.name || "Guest"}
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-muted-foreground">
                   {auth?.user?.email || ""}
                 </p>
               </div>
@@ -227,7 +235,7 @@ const Header = () => {
             </button>
 
             {isMobileMenuOpen && (
-              <div className="absolute left-0 mt-2 w-48 rounded-lg border bg-white shadow-md z-50">
+              <div className="absolute left-0 mt-2 w-48 rounded-lg border bg-card text-card-foreground shadow-md z-50">
                 <ul className="text-sm">
                   <li>
                     <Link
@@ -273,6 +281,24 @@ const Header = () => {
                     >
                       Track Order
                     </Link>
+                  </li>
+                  <li className="border-t">
+                    <button
+                      className="w-full text-left px-4 py-2 hover:bg-muted flex items-center gap-2"
+                      onClick={toggleTheme}
+                    >
+                      {isDark ? (
+                        <>
+                          <Sun className="h-4 w-4 text-yellow-500" />
+                          <span>Light Mode</span>
+                        </>
+                      ) : (
+                        <>
+                          <Moon className="h-4 w-4 text-slate-500" />
+                          <span>Dark Mode</span>
+                        </>
+                      )}
+                    </button>
                   </li>
                   <li>
                     <button
